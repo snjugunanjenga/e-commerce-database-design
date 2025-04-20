@@ -1,3 +1,5 @@
+CREATE DATABASE ecommerce;
+USE ecommerce;
 -- Core Tables
 CREATE TABLE brand (
     brand_id INT PRIMARY KEY,
