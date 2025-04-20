@@ -54,7 +54,7 @@ CREATE TABLE product_item (
     product_id INT,
     size_id INT,
     color_id INT,
-    price DECIMAL(10,2) NOT NULL,
+    price DECIMALg(10,2) NOT NULL,
     stock_quantity INT NOT NULL CHECK (stock_quantity >= 0),
     FOREIGN KEY (product_id) REFERENCES product(product_id),
     FOREIGN KEY (size_id) REFERENCES size_option(size_id),
