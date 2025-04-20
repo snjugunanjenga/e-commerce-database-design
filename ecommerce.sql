@@ -30,10 +30,11 @@ CREATE TABLE color (
 
 CREATE TABLE product (
     product_id INT PRIMARY KEY,
-    name VARCHAR(200) NOT NULL,
+    product_name VARCHAR(200) NOT NULL,
+    product_description TEXT NOT NULL,
     brand_id INT,
     category_id INT,
-    base_price DECIMAL(10,2) NOT NULL,
+    product_price DECIMAL(10,2) NOT NULL,
     size_category_id INT,
     FOREIGN KEY (brand_id) REFERENCES brand(brand_id),
     FOREIGN KEY (category_id) REFERENCES product_category(category_id),
@@ -56,7 +57,7 @@ CREATE TABLE product_item (
     product_id INT,
     size_id INT,
     color_id INT,
-    price DECIMALg(10,2) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
     stock_quantity INT NOT NULL CHECK (stock_quantity >= 0),
     FOREIGN KEY (product_id) REFERENCES product(product_id),
     FOREIGN KEY (size_id) REFERENCES size_option(size_id),
@@ -91,7 +92,7 @@ CREATE TABLE product_attribute (
     attribute_id INT PRIMARY KEY,
     product_id INT,
     type_id INT,
-    value TEXT NOT NULL,
+    attribute_value TEXT NOT NULL,
     FOREIGN KEY (product_id) REFERENCES product(product_id),
     FOREIGN KEY (type_id) REFERENCES attribute_type(type_id)
 );
