@@ -158,23 +158,23 @@ INSERT INTO product_item (item_id, variation_id, price, stock_quantity) VALUES
 -- Add material and weight attributes:
 
 
-INSERT INTO product_attribute (attribute_id, product_id, type_id, value, description, created_at) VALUES
-(1, 21, 1, '100% Cotton', 'Soft and breathable fabric', CURRENT_TIMESTAMP),
-(2, 21, 2, '200 grams', 'Lightweight material', CURRENT_TIMESTAMP);
+INSERT INTO product_attribute (attribute_id, product_id, type_id, attribute_value) VALUES
+(1, 21, 1, '100% Cotton'),
+(2, 21, 2, '200 grams');
 
 -- Example 2: Apple iPhone 13 (product_id = 1)
 -- Add technical attributes
 
-INSERT INTO product_attribute (attribute_id, product_id, type_id, value, description, created_at) VALUES
-(3, 1, 1, 'Aluminum', 'Durable frame material', CURRENT_TIMESTAMP),
-(4, 1, 4, '20 hours', 'Battery life for video playback', CURRENT_TIMESTAMP);
+INSERT INTO product_attribute (attribute_id, product_id, type_id, attribute_value) VALUES
+(3, 1, 1, 'Aluminum'),
+(4, 1, 4, '20 hours');
 
 -- Example 3: To Kill a Mockingbird (product_id = 11)
 -- Add book-specific attributes:
 
 
-INSERT INTO product_attribute (attribute_id, product_id, type_id, value, description, created_at) VALUES
-(5, 11, 5, '368', 'Number of pages in paperback edition', CURRENT_TIMESTAMP);
+INSERT INTO product_attribute (attribute_id, product_id, type_id, attribute_value) VALUES
+(5, 11, 5, '368');
 
 -- Step 7: Scale to All 50 Products
 -- To cover all 50 products, follow these guidelines:
@@ -206,6 +206,9 @@ SELECT * FROM product_item WHERE stock_quantity < 0;
 SELECT * FROM product_attribute WHERE product_id NOT IN (SELECT product_id FROM products);
 SELECT * FROM product_variation WHERE size_id NOT IN (SELECT size_id FROM size_option WHERE size_category_id = (SELECT category_id FROM size_category WHERE category_name = 'Clothing'));
 
+
+SELECT * FROM product_variation WHERE product_id NOT IN (SELECT product_id FROM products);
+SELECT * FROM product_item WHERE stock_quantity < 0;
 
 -- Conclusion
 -- This process populates the size_category, size_option, color, product_variation, product_item, attribute_category, attribute_type, and product_attribute tables for your e-commerce database. The examples cover clothing, shoes, electronics, and books, providing a template to extend to all 50 products. If you need SQL for specific products or additional tables (e.g., product_image), let me know! Would you like to focus on a particular product category or table next?
