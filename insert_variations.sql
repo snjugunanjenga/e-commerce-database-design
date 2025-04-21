@@ -199,7 +199,7 @@ INSERT INTO product_attribute (attribute_id, product_id, type_id, attribute_valu
 -- Business Rule: For products with a size_category_id, ensure their product_variation.size_id references a size_option in that category (e.g., Clothing sizes for T-shirts).
 
 -- Run queries to check:
--- sql
+
 
 SELECT * FROM product_variation WHERE product_id NOT IN (SELECT product_id FROM products);
 SELECT * FROM product_item WHERE stock_quantity < 0;
